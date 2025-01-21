@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-import * as THREE from 'three'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { onMounted, ref } from 'vue'
 import useMarioObject from '~/composables/useMarioObject'
 import useThreeCamera from '~/composables/useThreeCamera'
 import useThreeLights from '~/composables/useThreeLights'
-import useThreeObjects from '~/composables/useThreeObjects'
 import useThreeRenderer from '~/composables/useThreeRenderer'
 import useThreeScene from '~/composables/useThreeScene'
 
@@ -16,26 +15,43 @@ const threeCanvas = ref() as Ref<HTMLDivElement>
 
 onMounted(async () => {
   const scene = useThreeScene()
+
   const camera = useThreeCamera()
+  // Handle window resizing
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight
+    camera.updateProjectionMatrix()
+  })
+
   const renderer = useThreeRenderer(threeCanvas.value)
-  useThreeLights(scene)
-  const { cube } = useThreeObjects()
-  scene.add(cube)
+  useThreeLights(scene, camera)
+  /* const { cube } = useThreeObjects()
+  scene.add(cube) */
   // mario è nero
   const mario = await useMarioObject()
   scene.add(mario)
   mario.scale.set(0.5, 0.5, 0.5)
 
+  const controls = new OrbitControls(camera, renderer.domElement)
+  controls.minDistance = 2
+  controls.maxDistance = 10
+  controls.enablePan = false
+  controls.autoRotateSpeed = 2
+  controls.autoRotate = true
+  controls.enableDamping = true
+
   // Animation loop
   const animate = () => {
-    requestAnimationFrame(animate)
-    cube.rotation.x += 0.01
-    cube.rotation.y += 0.01
-    mario.rotation.x += 0.01
-    mario.rotation.y += 0.01
+    /* requestAnimationFrame(animate) */
+    /* cube.rotation.x += 0.01
+    cube.rotation.y += 0.01 */
+    /* mario.rotation.x += 0.01
+    mario.rotation.y += 0.01 */
+    controls.update()
     renderer.render(scene, camera)
   }
-  animate()
+
+  renderer.setAnimationLoop(animate)
 })
 </script>
 
@@ -55,5 +71,4 @@ onMounted(async () => {
   </div>
 </template>
 
-  <style>
-  </style>
+<style></style>
