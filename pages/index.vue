@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { BriefcaseIcon, CpuChipIcon, DocumentTextIcon, EnvelopeIcon } from '@heroicons/vue/20/solid'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { onMounted, ref } from 'vue'
 import useMarioObject from '~/composables/useMarioObject'
@@ -8,7 +9,8 @@ import useThreeRenderer from '~/composables/useThreeRenderer'
 import useThreeScene from '~/composables/useThreeScene'
 
 const { config } = useAppConfig()
-definePageMeta({ layout: 'page' })
+// definePageMeta({ layout: 'page' })
+
 useHead({ titleTemplate: '', title: config?.name || 'Nuxt 3 Awesome Starter' })
 
 const threeCanvas = ref() as Ref<HTMLDivElement>
@@ -51,22 +53,36 @@ onMounted(async () => {
     renderer.render(scene, camera)
   }
 
+  /*  const cameraDir = new Vector3()
+  camera.getWorldDirection(cameraDir)
+  console.log(cameraDir)
+  camera.position.set(0, -10, 0)
+  camera.getWorldDirection(cameraDir)
+  console.log(cameraDir)
+  camera.lookAt(cameraDir) */
+
   renderer.setAnimationLoop(animate)
 })
 </script>
 
 <template>
   <div>
-    <div class="h-screen flex flex-col xl:flex-row items-center justify-start pt-16 xl:pl-16 xl:pt-0">
-      <div class="text-center xl:text-left space-y-5">
-        <h1 class="text-6xl font-bold text-cyan-300 mb-2 tracking-wide">
+    <div class="h-screen flex flex-col xl:flex-row items-center justify-start">
+      <div class="text-center xl:text-left space-y-5 z-10 mt-16 xl:ml-16 xl:mt-0">
+        <h1 class="text-4xl xl:text-6xl font-bold text-cyan-300 mb-2 tracking-wide">
           Matteo Ducoli
         </h1>
-        <h2 class="text-l text-blue-200 tracking-wide uppercase">
+        <h2 class=" text-lg xl:text-l text-blue-200 tracking-wide uppercase">
           Freelance full stack developer and software engineer
         </h2>
+        <div class=" flex flex-wrap space-x-4 pt-4 justify-center gap-y-2">
+          <LinkBadge url="https://www.linkedin.com/in/matteo-ducoli/" :icon="BriefcaseIcon" title="LinkedIn" />
+          <LinkBadge url="https://github.com/MatteoDuco" :icon="CpuChipIcon" title="GitHub" />
+          <LinkBadge url="mailto:info@ducolimatteo.it" :icon="EnvelopeIcon" title="Mail" />
+          <PDFModal :is-open="true" pdf-url="/CV_MatteoDucoli.pdf" :icon="DocumentTextIcon" title="CV" />
+        </div>
       </div>
-      <div ref="threeCanvas" class="fixed" />
+      <div ref="threeCanvas" class="fixed mt-20 xl:mt-0 xl:ml-28" />
     </div>
   </div>
 </template>
