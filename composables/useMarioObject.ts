@@ -1,4 +1,4 @@
-import type { Object3D, Object3DEventMap, Scene } from 'three'
+import type { Object3D, Object3DEventMap } from 'three'
 // import { BoxGeometry, Mesh, MeshStandardMaterial } from 'three'
 import { MTLLoader, OBJLoader } from 'three/examples/jsm/Addons.js'
 

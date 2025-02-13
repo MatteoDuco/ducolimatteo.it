@@ -1,5 +1,7 @@
 # Nuxt Minimal Starter
 
+This is an ongoing project. It will get cooler with time.
+
 (I have the memory of a goldfish and the will to Google of a caveman)
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.

@@ -79,11 +79,12 @@ onMounted(async () => {
           <LinkBadge url="https://www.linkedin.com/in/matteo-ducoli/" :icon="BriefcaseIcon" title="LinkedIn" />
           <LinkBadge url="https://github.com/MatteoDuco" :icon="CpuChipIcon" title="GitHub" />
           <LinkBadge url="mailto:info@ducolimatteo.it" :icon="EnvelopeIcon" title="Mail" />
-          <PDFModal :is-open="true" pdf-url="/CV_MatteoDucoli.pdf" :icon="DocumentTextIcon" title="CV" />
+          <PDFModal pdf-url="/CV_MatteoDucoli.pdf" :icon="DocumentTextIcon" title="CV" />
         </div>
       </div>
       <div ref="threeCanvas" class="fixed mt-20 xl:mt-0 xl:ml-28" />
     </div>
+    <app-footer />
   </div>
 </template>
 

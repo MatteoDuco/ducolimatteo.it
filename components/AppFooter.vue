@@ -2,7 +2,7 @@
 export default {
   data() {
     return {
-      footerClick: false,
+      footerClick: true,
     }
   },
 }

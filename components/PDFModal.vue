@@ -1,32 +1,22 @@
-<script lang="ts">
-export default {
-  props: {
-    pdfUrl: {
-      type: String,
-      required: true,
-    },
-    icon: {
-      type: [String, Object],
-      required: true,
-    },
-    title: {
-      type: String,
-      required: false,
-    },
-  },
-  data() {
-    return {
-      isOpen: false,
-    }
-  },
-  methods: {
-    closeModal() {
-      this.isOpen = false
-    },
-    openModal() {
-      this.isOpen = true
-    },
-  },
+<script setup lang="ts">
+import { type FunctionalComponent, ref } from 'vue'
+
+interface Props {
+  pdfUrl: string
+  icon: FunctionalComponent
+  title?: string
+}
+
+defineProps<Props>()
+
+const isOpen = ref(false)
+
+function closeModal() {
+  isOpen.value = false
+}
+
+function openModal() {
+  isOpen.value = true
 }
 </script>
 
@@ -42,7 +32,11 @@ export default {
           <span class="text-2xl">&times;</span>
         </button>
       </div>
-      <iframe :src="`${pdfUrl}#toolbar=0&navpanes=0&scrollbar=0`" class="w-full h-[70vh] border-none" frameborder="0" />
+      <iframe
+        :src="`${pdfUrl}#toolbar=0&navpanes=0&scrollbar=0`"
+        class="w-full h-[70vh] border-none"
+        frameborder="0"
+      />
     </div>
   </div>
 </template>
