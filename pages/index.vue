@@ -19,6 +19,7 @@ onMounted(async () => {
   const scene = useThreeScene()
 
   const camera = useThreeCamera()
+
   // Handle window resizing
   window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight
@@ -27,9 +28,8 @@ onMounted(async () => {
 
   const renderer = useThreeRenderer(threeCanvas.value)
   useThreeLights(scene, camera)
-  /* const { cube } = useThreeObjects()
-  scene.add(cube) */
-  // mario è nero
+
+  // TODO: move to composable
   const mario = await useMarioObject()
   scene.add(mario)
   mario.scale.set(0.5, 0.5, 0.5)
@@ -44,22 +44,9 @@ onMounted(async () => {
 
   // Animation loop
   const animate = () => {
-    /* requestAnimationFrame(animate) */
-    /* cube.rotation.x += 0.01
-    cube.rotation.y += 0.01 */
-    /* mario.rotation.x += 0.01
-    mario.rotation.y += 0.01 */
     controls.update()
     renderer.render(scene, camera)
   }
-
-  /*  const cameraDir = new Vector3()
-  camera.getWorldDirection(cameraDir)
-  console.log(cameraDir)
-  camera.position.set(0, -10, 0)
-  camera.getWorldDirection(cameraDir)
-  console.log(cameraDir)
-  camera.lookAt(cameraDir) */
 
   renderer.setAnimationLoop(animate)
 })

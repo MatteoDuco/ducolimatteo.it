@@ -7,10 +7,7 @@ export default function useThreeRenderer(canvas: HTMLElement) {
   })
   renderer.setSize(window.innerWidth, window.innerHeight)
   renderer.setPixelRatio(window.devicePixelRatio)
-  /* renderer.domElement.style.position = 'fixed'
-  renderer.domElement.style.top = '0'
-  renderer.domElement.style.left = '0'
-  renderer.domElement.style.zIndex = '-1' // Make it the background */
+
   canvas.appendChild(renderer.domElement)
 
   // Handle window resizing
