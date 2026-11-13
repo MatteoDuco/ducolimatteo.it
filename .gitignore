@@ -22,3 +22,44 @@ logs
 .env
 .env.*
 !.env.example
+
+# Local credentials (never publish hosting credentials)
+.netrc
+_netrc
+.ftpconfig
+.vscode/sftp.json
+*.pem
+*.key
+
+# Test, coverage, and local tooling output
+coverage/
+.nyc_output/
+playwright-report/
+test-results/
+*.tsbuildinfo
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Disposable agent work. Durable rules, plans, skills, and tasks stay tracked.
+/.agent/tmp/
+/.agent/scratch/
+/.agent/sessions/
+/.agent/logs/
+/.agent/artifacts/
+/.agents/tmp/
+/.agents/scratch/
+/.agents/sessions/
+/.codex/tmp/
+/.codex/sessions/
+/.codex/logs/
+/tmp/
+/scratch/
+/session-logs/
+*.scratch.md
+*.session.log
+
+# Machine-local agent settings; do not ignore shared instruction directories.
+/.agent/*.local.*
+/.codex/*.local.*
