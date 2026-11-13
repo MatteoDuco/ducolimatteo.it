@@ -28,59 +28,17 @@ bun install
 
 Start the development server on `http://localhost:3000`:
 
-```bash
-# npm
+```sh
+npm ci
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+The development server normally runs at http://localhost:3000.
 
-Build the application for production:
+## Validation and static output
 
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
+```sh
+npm run lint
+npm run typecheck
+npm run generate
 npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
-
-Update:
-
-```bash
-# npm
-npx npm-check-updates -i
-```

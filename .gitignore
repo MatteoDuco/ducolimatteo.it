@@ -42,24 +42,19 @@ Thumbs.db
 *.swo
 *~
 
-# Disposable agent work. Durable rules, plans, skills, and tasks stay tracked.
-/.agent/tmp/
-/.agent/scratch/
-/.agent/sessions/
-/.agent/logs/
-/.agent/artifacts/
-/.agents/tmp/
-/.agents/scratch/
-/.agents/sessions/
-/.codex/tmp/
-/.codex/sessions/
-/.codex/logs/
+# Local AI setup, installed skills, execution state, and detailed audit evidence.
+# Shared guidance stays in /AGENTS.md; portable project knowledge stays in docs.
+/.agent/
+/.agents/
+/.codex/
+/skills-lock.json
+/docs/
+/tasks/
+
+# Disposable work outside the local agent directories
 /tmp/
 /scratch/
 /session-logs/
 *.scratch.md
 *.session.log
-
-# Machine-local agent settings; do not ignore shared instruction directories.
-/.agent/*.local.*
-/.codex/*.local.*
+AGENTS.md
